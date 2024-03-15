@@ -1,0 +1,17 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "assets/fonts/Fuzzy Bubbles Regular.ttf",
+      "sha1": "61be2e9e6954191b78155577952adf894c19f8e7"
+    },
+    {
+      "path": "assets/fonts/LT Afficher Neue Text.otf",
+      "sha1": "8979c23ae6fbb1188661ae9a6a724f87722d8eb8"
+    },
+    {
+      "path": "assets/fonts/LT Glockenspiel Black.ttf",
+      "sha1": "58ebb407b3a2feedc4d17e7cde70f4d9082dde39"
+    }
+  ]
+}
