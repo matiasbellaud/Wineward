@@ -15,8 +15,8 @@ const  ProfilView = () => {
     <View style = {styles.body}>
       {/* HEADER*/}
       <View style = {styles.Header}>
-        <Image source={require('../../assets/images/MapIcon.png')} style={styles.HeaderImage} /> 
         <Text style={styles.HeaderTitle}>Mon Profil</Text>
+        <Image source={require('../../assets/images/MapIcon.png')} style={styles.HeaderImage} /> 
       </View>
 
       {/*PROFIL INFORMATION*/}
@@ -45,10 +45,10 @@ const  ProfilView = () => {
           <Text style={styles.BottleText}>Taille de Bouteilles</Text>
           <Text style={styles.BottleTextDot}>:</Text>
           <View style={styles.BottlePictureBox}>
-            <Image source={require('../../assets/images/wineBottle.png')} style={styles.BottlePicture} />  
+            <Image source={require('../../assets/images/3wineBottles.png')} style={styles.BottlePicture} />  
           </View>
           <View style={styles.BottlePictureBoxWhite}>
-            <Image source={require('../../assets/images/wineBottle.png')} style={styles.BottlePictureWhite} resizeMode="cover"/>  
+            <Image source={require('../../assets/images/3wineBottles.png')} style={styles.BottlePictureWhite} resizeMode="cover"/>  
           </View>
           <Text style={styles.BottleCompletionStat}>50 %</Text>
         </View>
@@ -67,23 +67,23 @@ const styles = StyleSheet.create({
   //HEADER
   Header: {
     elevation:10,
-    flexDirection: 'row',
     backgroundColor: "#AC1E44",
     height: 105,
     alignItems: "center",
     borderBottomRightRadius: 20,
     borderBottomLeftRadius: 20,
   },
+
   HeaderTitle: {
+    marginTop:30,
     fontSize:35,
     color:"#ffffff",
-    marginLeft:22,
     fontFamily:'LT Afficher Neue Text',
   },
   HeaderImage: {
     width: 43, height: 43,
-    left:-4,
-    marginLeft:38,
+    marginTop:"-12%",
+    marginLeft:"-70%",
   },
 
   //PROFIL PAGE

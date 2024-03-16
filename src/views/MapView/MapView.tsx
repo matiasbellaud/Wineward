@@ -21,8 +21,8 @@ const  MapView = () => {
     <View style = {styles.body}>
       {/* HEADER */}
       <View style = {styles.Header}>
-        <Image source={require('../../assets/images/MapIcon.png')} style={styles.HeaderImage} /> 
         <Text style={styles.HeaderTitle}>Ma Carte</Text>
+        <Image source={require('../../assets/images/MapIcon.png')} style={styles.HeaderImage} />  
       </View>
   </View>
   );
@@ -35,7 +35,6 @@ const styles = StyleSheet.create({
   },
 
   Header: {
-    flexDirection: 'row',
     backgroundColor: "#AC1E44",
     height: 105,
     alignItems: "center",
@@ -43,15 +42,16 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 20,
   },
   HeaderTitle: {
+    marginTop:30,
     fontSize:35,
     color:"#ffffff",
     fontFamily:'LT Afficher Neue Text',
-    marginLeft:22,
   },
   HeaderImage: {
     width: 43, height: 43,
-    left:-4,
-    marginLeft:50,
+    marginTop:"-12%",
+    marginLeft:"-60%",
+    
   }
 });
 
