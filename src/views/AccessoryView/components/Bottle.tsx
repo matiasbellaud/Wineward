@@ -324,7 +324,6 @@ const styles = StyleSheet.create({
       },
       Bottle2ImageTop:{
         width: "100%", height: "100%",
-        tintColor: '#000000',
         transform: [{ scaleY: -1 }],
       },
       buttonBottle3Top:{
@@ -334,7 +333,6 @@ const styles = StyleSheet.create({
       },
       Bottle3ImageTop:{
         width: "100%", height: "100%",
-        tintColor: '#000000',
         transform: [{ scaleY: -1 }], 
       },
       buttonBottle4Top:{
@@ -344,7 +342,6 @@ const styles = StyleSheet.create({
       },
       Bottle4ImageTop:{
         width: "100%", height: "100%",
-        tintColor: '#000000',
         transform: [{ scaleY: -1 }],
       },
       buttonBottle5Top:{
@@ -354,7 +351,6 @@ const styles = StyleSheet.create({
       },
       Bottle5ImageTop:{
         width: "100%", height: "100%",
-        tintColor: '#000000',
         transform: [{ scaleY: -1 }],
       },
             
@@ -425,7 +421,6 @@ const styles = StyleSheet.create({
       },
       Bottle1ImageBottom:{
         width: "100%", height: "100%",
-        tintColor: '#000000',
       },
       buttonBottle2Bottom:{
         width: "8.4%", height: 70,
@@ -434,7 +429,6 @@ const styles = StyleSheet.create({
       },
       Bottle2ImageBottom:{
         width: "100%", height: "100%",
-        tintColor: '#000000',
       },
       buttonBottle3Bottom:{
         width: "8.4%", height: 90,
@@ -443,7 +437,6 @@ const styles = StyleSheet.create({
       },
       Bottle3ImageBottom:{
         width: "100%", height: "100%",
-        tintColor: '#000000',
       },
       buttonBottle4Bottom:{
         width: "8.4%", height: 110,
@@ -452,7 +445,6 @@ const styles = StyleSheet.create({
       },
       Bottle4ImageBottom:{
         width: "100%", height: "100%",
-        tintColor: '#000000',
       },
       buttonBottle5Bottom:{
         width: "10.5%", height: 130,
@@ -461,7 +453,6 @@ const styles = StyleSheet.create({
       },
       Bottle5ImageBottom:{
         width: "100%", height: "100%",
-        tintColor: '#000000',
       },
       buttonBottle6Bottom:{
         width: "13.3%", height: 150,
@@ -470,7 +461,6 @@ const styles = StyleSheet.create({
       },
       Bottle6ImageBottom:{
         width: "100%", height: "100%",
-        tintColor: '#000000',
       },
 
         Bottle1LiterBottom:{
@@ -493,7 +483,7 @@ const styles = StyleSheet.create({
           marginTop:5,
           marginLeft:"0%",
         },
-        
+
 });
 
 export default Bottle;
