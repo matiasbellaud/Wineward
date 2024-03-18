@@ -493,6 +493,7 @@ const styles = StyleSheet.create({
           marginTop:5,
           marginLeft:"0%",
         },
+        
 });
 
 export default Bottle;
