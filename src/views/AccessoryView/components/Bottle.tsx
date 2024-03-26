@@ -125,23 +125,23 @@ class Bottle extends React.Component  {
                 <TouchableOpacity style={styles.buttonBottle1Bottom} activeOpacity={1} onPress={() => this.activateButton(6)}>
                     <Image source={require('../../../assets/images/wineBottle.png')} style={[styles.Bottle1ImageBottom, button6 && styles.bottleValidate]}/>
                 </TouchableOpacity>
-                <Text style={[styles.Bottle1LiterBottom, styles.BottleText]}>1.5L</Text>
+                <Text style={[styles.Bottle1LiterBottom, styles.BottleText]}>0.75L</Text>
                 <TouchableOpacity style={styles.buttonBottle2Bottom} activeOpacity={1} onPress={() => this.activateButton(7)}>
                     <Image source={require('../../../assets/images/wineBottle.png')} style={[styles.Bottle2ImageBottom, button7 && styles.bottleValidate]}/>
                 </TouchableOpacity>
-                <Text style={[styles.Bottle2LiterBottom, styles.BottleText]}>4.5L</Text>
+                <Text style={[styles.Bottle2LiterBottom, styles.BottleText]}>3L</Text>
                 <TouchableOpacity style={styles.buttonBottle3Bottom} activeOpacity={1} onPress={() => this.activateButton(8)}>
                     <Image source={require('../../../assets/images/wineBottle.png')} style={[styles.Bottle3ImageBottom, button8 && styles.bottleValidate]}/>
                 </TouchableOpacity>
-                <Text style={[styles.Bottle3LiterBottom, styles.BottleText]}>9L</Text>
+                <Text style={[styles.Bottle3LiterBottom, styles.BottleText]}>6L</Text>
                 <TouchableOpacity style={styles.buttonBottle4Bottom} activeOpacity={1} onPress={() => this.activateButton(9)}>
                     <Image source={require('../../../assets/images/wineBottle.png')} style={[styles.Bottle4ImageBottom, button9 && styles.bottleValidate]}/>
                 </TouchableOpacity>
-                <Text style={[styles.Bottle4LiterBottom, styles.BottleText]}>15L</Text>
+                <Text style={[styles.Bottle4LiterBottom, styles.BottleText]}>12L</Text>
                 <TouchableOpacity style={styles.buttonBottle5Bottom} activeOpacity={1} onPress={() => this.activateButton(10)}>
                     <Image source={require('../../../assets/images/wineBottle.png')} style={[styles.Bottle5ImageBottom, button10 && styles.bottleValidate]}/>
                 </TouchableOpacity>
-                <Text style={[styles.Bottle5LiterBottom, styles.BottleText]}>30L</Text>
+                <Text style={[styles.Bottle5LiterBottom, styles.BottleText]}>18L</Text>
                 <TouchableOpacity style={styles.buttonBottle6Bottom} activeOpacity={1} onPress={() => this.activateButton(11)}>
                     <Image source={require('../../../assets/images/wineBottle.png')} style={[styles.Bottle6ImageBottom, button11 && styles.bottleValidate]}/>
                 </TouchableOpacity>

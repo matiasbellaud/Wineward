@@ -38,13 +38,14 @@ class MapComponent extends React.Component  {
             backgroundColor: "#1B1A18"
           }}
         > 
-        <TouchableOpacity activeOpacity={1} onPress={() => this.activateButton()}>
+          <Image
+              style={{ height:"100%", resizeMode: 'contain' }}
+              source={require('../../../assets/images/map.png' )}
+              />
+          <TouchableOpacity activeOpacity={1} onPress={() => this.activateButton()} style={styles.buttonTest}>
               <Text>jjfezifbezl</Text>
           </TouchableOpacity>
-          <Image
-            style={{ height:"100%", resizeMode: 'contain' }}
-            source={require('../../../assets/images/map.png' )}
-            />
+          
         </ReactNativeZoomableView>
       </View>
     );
@@ -56,7 +57,14 @@ const styles = StyleSheet.create({
     height:"95%",
     backgroundColor: "#1B1A18",
     paddingBottom: 30
+  },
+
+  buttonTest: {
+    top:-150,
+    backgroundColor:"blue"
+
   }
+  
     
 });
 
