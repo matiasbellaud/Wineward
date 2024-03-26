@@ -18,21 +18,20 @@ const screenOptions = {
     backgroundColor:"#AC1E44"
   }
 }
-const  App = () => {
+const  Menu = () => {
   useEffect(() => {
     // Changez la couleur de la barre de navigation
     setNavigationBarColor('#AC1E44', true); // Couleur et transparence
   }, []);
   return (
     <>
-      <NavigationContainer>
         <Tab.Navigator screenOptions={screenOptions}>
           <Tab.Screen 
             name="Map" 
             component={MapView}
             options={{
               tabBarIcon: ({focused}) =>{
-                const image = focused ? require('./assets/images/MapIconFocus.png') : require('./assets/images/MapIcon.png')
+                const image = focused ? require('../assets/images/MapIconFocus.png') : require('../assets/images/MapIcon.png')
                 return (
                   <View 
                     style={{ 
@@ -58,7 +57,7 @@ const  App = () => {
             component={AccessoryView}
             options={{
               tabBarIcon: ({focused}) =>{
-                const image = focused ? require('./assets/images/AccessoryIconFocus.png') : require('./assets/images/AccessoryIcon.png')
+                const image = focused ? require('../assets/images/AccessoryIconFocus.png') : require('../assets/images/AccessoryIcon.png')
                 return (
                   <View 
                     style={{ 
@@ -85,7 +84,7 @@ const  App = () => {
             component={ProfilView}
             options={{
               tabBarIcon: ({focused}) =>{
-                const image = focused ? require('./assets/images/ProfilIconFocus.png') : require('./assets/images/ProfilIcon.png')
+                const image = focused ? require('../assets/images/ProfilIconFocus.png') : require('../assets/images/ProfilIcon.png')
                 return (
                   <View 
                     style={{ 
@@ -107,9 +106,8 @@ const  App = () => {
               } 
             }}/>
         </Tab.Navigator>
-      </NavigationContainer>
     </>
   );
 }
 
-export default App;
+export default Menu;

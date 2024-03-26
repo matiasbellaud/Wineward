@@ -7,22 +7,46 @@ import {
   Image,
   TextInput,
   Pressable,
-  Alert
+  Alert,
+  Platform,
+  
 } from 'react-native';
 
 
-function LoginView() {
-    // constructor(props : any) {
-    //     super(props);
-    //     this.state = {
-    //         email: "",
-    //         password: ""
-    //     };
-    // }
-//   componentDidMount() {
-//   }
-//   render() {
-    const [click,setClick] = useState(false);
+function LoginView({ navigation }:any) {
+
+    const onSubmitHandler = () => {
+        const user = {
+            email,
+            password,
+        };
+        console.log("start test")
+        fetch(`http://192.168.1.28:5070/api/loginUser`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(user),
+        })
+        .then(async res => { 
+            try {
+                const jsonRes = await res.json();
+                console.log(jsonRes.results.rows)
+                if (res.status == 404) {
+                    console.log(" non connecté")
+                } else {
+                    console.log("connecté")
+                    navigation.replace("Menu", { screen: "Menu" })
+                }
+            } catch (err) {
+                console.log(err);
+            };
+        })
+        .catch(err => {
+            console.log(err);
+        });
+    };
+
     const [email,setEmail]=  useState("");
     const [password,setPassword]=  useState("");
   return (
@@ -60,31 +84,23 @@ function LoginView() {
                     placeholderTextColor="white" />
             </View>
             <View>
-                <Pressable style={styles.forgotPasswordButton} onPress={() => Alert.alert("Login Successfuly!","see you in my instagram if you have questions : must_ait6")}>
+                <Pressable style={styles.forgotPasswordButton} onPress={() => Alert.alert("change password")}>
                     <Text style={styles.forgotPasswordText}>Mot de passe oublié ?</Text>
                 </Pressable>
             </View>
             
         </View>
         <View style={styles.buttonContainer}>
-            <Pressable style={styles.loginButton} onPress={() => Alert.alert("Login Successfuly!","see you in my instagram if you have questions : must_ait6")}>
+            <Pressable style={styles.loginButton} onPress={onSubmitHandler}>
                 <Text style={styles.loginButtonText}>Se connecter</Text>
             </Pressable>
         </View>
         <View style={styles.signUpContainer}>
             <Text style={styles.signUpText}>Nouveau membre ?</Text>
-            <Pressable style={styles.signUpButton} onPress={() => Alert.alert("Login Successfuly!","see you in my instagram if you have questions : must_ait6")}>
+            <Pressable style={styles.signUpButton} onPress={() => navigation.replace("Menu", { screen: "Menu" })}>
                     <Text style={styles.signUpButtonText}>Créer votre compte</Text>
             </Pressable>
         </View>
-                {/* <TextInput style={styles.input} placeholder='EMAIL OR USERNAME' value={username} onChangeText={setUsername} autoCorrect={false}
-                    autoCapitalize='none' />
-    
-
-                <Pressable style={styles.button} onPress={() => Alert.alert("Login Successfuly!","see you in my instagram if you have questions : must_ait6")}>
-                    <Text style={styles.buttonText}>LOGIN</Text>
-                </Pressable> */}
-        
     </View>
     </>
   );
