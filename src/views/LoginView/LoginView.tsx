@@ -5,7 +5,9 @@ import {
   Text,
   View,
   Image,
-  TextInput
+  TextInput,
+  Pressable,
+  Alert
 } from 'react-native';
 
 
@@ -37,11 +39,11 @@ function LoginView() {
                     value={email} 
                     onChangeText={setEmail} 
                     autoCorrect={false}
-                    autoCapitalize='none'
-                    placeholderTextColor="white"
+                    autoCapitalize="none"
                     cursorColor="white"
                     maxLength={60}
-                    textAlign="center"/>
+                    textAlign="center"
+                    placeholderTextColor="white"  />
             </View>
             <View style={styles.formContainer}>
                 <Image source={require('../../assets/images/password.png')} style={styles.icon} resizeMode='contain' />
@@ -57,12 +59,23 @@ function LoginView() {
                     textAlign="center"
                     placeholderTextColor="white" />
             </View>
+            <View>
+                <Pressable style={styles.forgotPasswordButton} onPress={() => Alert.alert("Login Successfuly!","see you in my instagram if you have questions : must_ait6")}>
+                    <Text style={styles.forgotPasswordText}>Mot de passe oublié ?</Text>
+                </Pressable>
+            </View>
             
         </View>
         <View style={styles.buttonContainer}>
+            <Pressable style={styles.loginButton} onPress={() => Alert.alert("Login Successfuly!","see you in my instagram if you have questions : must_ait6")}>
+                <Text style={styles.loginButtonText}>Se connecter</Text>
+            </Pressable>
         </View>
         <View style={styles.signUpContainer}>
-            
+            <Text style={styles.signUpText}>Nouveau membre ?</Text>
+            <Pressable style={styles.signUpButton} onPress={() => Alert.alert("Login Successfuly!","see you in my instagram if you have questions : must_ait6")}>
+                    <Text style={styles.signUpButtonText}>Créer votre compte</Text>
+            </Pressable>
         </View>
                 {/* <TextInput style={styles.input} placeholder='EMAIL OR USERNAME' value={username} onChangeText={setUsername} autoCorrect={false}
                     autoCapitalize='none' />
@@ -81,6 +94,7 @@ function LoginView() {
 const styles = StyleSheet.create({
   body: {
     backgroundColor:"#444444",
+    height:"100%"
   },
 
   imageContainer: {
@@ -121,14 +135,52 @@ const styles = StyleSheet.create({
         paddingBottom:-10,
         
     },
+    forgotPasswordButton:{
+        marginTop:"2%",
+    },
+    forgotPasswordText: {
+        marginLeft:"55%",
+        fontSize:12,
+        color:"#B2B2B2",
+        textDecorationLine: 'underline',
+        fontFamily:'LT Afficher Neue Text',        
+    },
 
 
   buttonContainer: {
-
+    marginTop: "12%",
+    paddingHorizontal : 50
+  },
+  loginButton: {
+    backgroundColor : "#AC1E44",
+    height : 45,
+    borderRadius : 45,
+    alignItems : "center",
+    justifyContent : "center"
+  },
+  loginButtonText:{
+    color:"white",
+    fontFamily:'LT Afficher Neue Text',
   },
   signUpContainer: {
-
-  }
+    marginTop:"5%"
+  },
+  signUpText:{
+    color:"white",
+    fontFamily:'LT Afficher Neue Text',
+    textAlign:"center",
+  },
+  signUpButton:{
+    marginTop:"2%",
+    alignItems : "center",
+    justifyContent : "center"
+  },
+  signUpButtonText:{
+    fontSize:12,
+    color:"#B2B2B2",
+    textDecorationLine: 'underline',
+    fontFamily:'LT Afficher Neue Text',
+  },
 });
 
 export default LoginView;
