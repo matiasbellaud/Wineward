@@ -13,14 +13,17 @@ import {
 } from 'react-native';
 
 
-function LoginView({ navigation }:any) {
+function SignUpView({ navigation }:any) {
 
     const onSubmitHandler = () => {
         const user = {
+            lastname,
+            firstname,
             email,
-            password,
+            password
         };
-        fetch(`http://192.168.183.30:5070/api/loginUser`, {
+        console.log("start test")
+        fetch(`http://192.168.183.30:5070/api/createUser`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -29,13 +32,13 @@ function LoginView({ navigation }:any) {
         })
         .then(async res => { 
             try {
-                const jsonRes = await res.json();
-                console.log(jsonRes.results.rows)
-                if (res.status == 404) {
-                    console.log(" non connecté")
-                } else {
+                // const jsonRes = await res.json();
+                console.log("test2")
+                if (res.status == 200) {
                     console.log("connecté")
                     navigation.replace("Menu", { screen: "Menu" })
+                } else {
+                    console.log(" non connecté")
                 }
             } catch (err) {
                 console.log(err);
@@ -46,6 +49,8 @@ function LoginView({ navigation }:any) {
         });
     };
 
+    const [lastname,setLastname]=  useState("");
+    const [firstname,setFirstname]=  useState("");
     const [email,setEmail]=  useState("");
     const [password,setPassword]=  useState("");
   return (
@@ -55,6 +60,32 @@ function LoginView({ navigation }:any) {
             <Image source={require('../../assets/images/wineBottle.png')} style={styles.logoTopLogin} resizeMode='contain' />
         </View>
         <View >
+            <View style={styles.formContainer}>
+                <Image source={require('../../assets/images/courrier.png')} style={styles.icon} resizeMode='contain' />
+                <TextInput style={styles.form} 
+                    placeholder='Nom' 
+                    value={lastname} 
+                    onChangeText={setLastname} 
+                    autoCorrect={false}
+                    autoCapitalize="none"
+                    cursorColor="white"
+                    maxLength={60}
+                    textAlign="center"
+                    placeholderTextColor="white"  />
+            </View>
+            <View style={styles.formContainer}>
+                <Image source={require('../../assets/images/courrier.png')} style={styles.icon} resizeMode='contain' />
+                <TextInput style={styles.form} 
+                    placeholder='Prénom' 
+                    value={firstname} 
+                    onChangeText={setFirstname} 
+                    autoCorrect={false}
+                    autoCapitalize="none"
+                    cursorColor="white"
+                    maxLength={60}
+                    textAlign="center"
+                    placeholderTextColor="white"  />
+            </View>
             <View style={styles.formContainer}>
                 <Image source={require('../../assets/images/courrier.png')} style={styles.icon} resizeMode='contain' />
                 <TextInput style={styles.form} 
@@ -82,11 +113,6 @@ function LoginView({ navigation }:any) {
                     textAlign="center"
                     placeholderTextColor="white" />
             </View>
-            <View>
-                <Pressable style={styles.forgotPasswordButton} onPress={() => Alert.alert("change password")}>
-                    <Text style={styles.forgotPasswordText}>Mot de passe oublié ?</Text>
-                </Pressable>
-            </View>
             
         </View>
         <View style={styles.buttonContainer}>
@@ -95,9 +121,9 @@ function LoginView({ navigation }:any) {
             </Pressable>
         </View>
         <View style={styles.signUpContainer}>
-            <Text style={styles.signUpText}>Nouveau membre ?</Text>
-            <Pressable style={styles.signUpButton} onPress={() => navigation.replace("SignUp", { screen: "SignUp" })}>
-                    <Text style={styles.signUpButtonText}>Créer votre compte</Text>
+            <Text style={styles.signUpText}>Déjà membre ?</Text>
+            <Pressable style={styles.signUpButton} onPress={() => navigation.replace("Login", { screen: "Login" })}>
+                    <Text style={styles.signUpButtonText}>Se connecter</Text>
             </Pressable>
         </View>
     </View>
@@ -198,4 +224,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default LoginView;
+export default SignUpView;
