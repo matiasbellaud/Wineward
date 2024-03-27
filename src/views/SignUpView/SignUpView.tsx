@@ -32,13 +32,11 @@ function SignUpView({ navigation }:any) {
         })
         .then(async res => { 
             try {
-                // const jsonRes = await res.json();
-                console.log("test2")
                 if (res.status == 200) {
                     console.log("connecté")
                     navigation.replace("Menu", { screen: "Menu" })
                 } else {
-                    console.log(" non connecté")
+                    console.log("compte déja créer")
                 }
             } catch (err) {
                 console.log(err);
