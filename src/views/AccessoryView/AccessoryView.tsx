@@ -4,9 +4,7 @@ import {
   Text,
   View,
   Image,
-  useWindowDimensions,
-  Button,
-  TouchableOpacity,
+  ScrollView
 } from 'react-native';
 import Bottle from './components/Bottle'
 
@@ -25,7 +23,11 @@ class AccessoryView extends Component  {
           <Image source={require('../../assets/images/MapIcon.png')} style={styles.HeaderImage} />
         </View>
         {/* BOTTLE COMPONENTS */}
-        <Bottle />
+        <View style={{maxHeight:"84%"}}>
+          <ScrollView >
+            <Bottle />
+          </ScrollView>
+        </View>
       </View>
       </>
     );
@@ -36,20 +38,20 @@ const styles = StyleSheet.create({
   
   body: {
     backgroundColor:"#444444",
-    height:2000,
+    height:"100%",
   },
   Header: {
     backgroundColor: "#AC1E44",
-    height: 105,
+    height: "15.8%",
     alignItems: "center",
     borderBottomRightRadius: 20,
     borderBottomLeftRadius: 20,
   },
   HeaderTitle: {
-    marginTop:10,
+    marginTop:"3%",
     fontSize:35,
     color:"#ffffff",
-    width:200,
+    width:"50%",
     textAlign: 'center',
     fontFamily:'LT Afficher Neue Text'
   },

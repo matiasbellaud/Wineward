@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, Component } from 'react';
 // import { useFonts } from 'expo-font';
 import {
   SafeAreaView,
@@ -8,30 +8,37 @@ import {
   Text,
   useColorScheme,
   View,
-  Image
+  Image,
+  Dimensions
 } from 'react-native';
+import MapComponent from './components/Map'
 
-const  MapView = () => {
 
-  // const [isLoaded] = useFonts({
-  //   "AfficherNeue": require("../../assets/fonts/LTAfficherNeue-BoldText.otf"),
-  // });
 
+class MapView extends Component  {
+  componentDidMount() {
+  }
+  windowWidth = Dimensions.get('window').width;
+  windowHeight = Dimensions.get('window').height;
+  render() {
   return (
-    <View style = {styles.body}>
+    <>
+    <View style = {[styles.body, {height:this.windowHeight}]}>
       {/* HEADER */}
       <View style = {styles.Header}>
         <Text style={styles.HeaderTitle}>Ma Carte</Text>
         <Image source={require('../../assets/images/MapIcon.png')} style={styles.HeaderImage} />  
       </View>
-  </View>
+      <MapComponent/>
+    </View>
+    </>
   );
+  }
 }
 
 const styles = StyleSheet.create({
   body: {
     backgroundColor:"#444444",
-    height:2000,
   },
 
   Header: {

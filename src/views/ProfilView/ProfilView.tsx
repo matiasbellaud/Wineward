@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, Component } from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -10,8 +10,28 @@ import {
   Image
 } from 'react-native';
 
-const  ProfilView = () => {
+class ProfilView extends Component  {
+  componentDidMount() {
+  }
+  render() {
+    const mapCompletion = 75
+    const bottleCompletion = 50
+
+    const bottomBoxFrance = {
+      bottom: -(87-87/100*mapCompletion+10)
+    };
+    const bottomImageFrance = {
+      bottom: (87-87/100*mapCompletion+10)
+    };
+ 
+    const bottomBoxbottle = {
+      bottom: -(65-65/100*bottleCompletion+18)
+    };
+    const bottomImagebottle = {
+      bottom: (65-65/100*bottleCompletion+18)
+    };
   return (
+    <>
     <View style = {styles.body}>
       {/* HEADER*/}
       <View style = {styles.Header}>
@@ -36,10 +56,10 @@ const  ProfilView = () => {
           <View style={styles.FrancePictureBox}>
             <Image source={require('../../assets/images/BlackFrance.png')} style={styles.FrancePicture}/> 
           </View>
-          <View style={styles.FrancePictureBoxWhite}>
-            <Image source={require('../../assets/images/BlackFrance.png')} style={styles.FrancePictureWhite} resizeMode="cover"/> 
+          <View style={[styles.FrancePictureBoxWhite,bottomBoxFrance]}>
+            <Image source={require('../../assets/images/BlackFrance.png')} style={[styles.FrancePictureWhite, bottomImageFrance]} resizeMode="cover"/> 
           </View>
-          <Text style={styles.mapCompletionStat}>75 %</Text>
+          <Text style={styles.mapCompletionStat}>{mapCompletion} %</Text>
         </View>
         <View style={styles.BottleCompletion}>
           <Text style={styles.BottleText}>Taille de Bouteilles</Text>
@@ -47,15 +67,17 @@ const  ProfilView = () => {
           <View style={styles.BottlePictureBox}>
             <Image source={require('../../assets/images/3wineBottles.png')} style={styles.BottlePicture} />  
           </View>
-          <View style={styles.BottlePictureBoxWhite}>
-            <Image source={require('../../assets/images/3wineBottles.png')} style={styles.BottlePictureWhite} resizeMode="cover"/>  
+          <View style={[styles.BottlePictureBoxWhite, bottomBoxbottle]}>
+            <Image source={require('../../assets/images/3wineBottles.png')} style={[styles.BottlePictureWhite,bottomImagebottle]} resizeMode="cover"/>  
           </View>
-          <Text style={styles.BottleCompletionStat}>50 %</Text>
+          <Text style={styles.BottleCompletionStat}>{bottleCompletion} %</Text>
         </View>
       </View>
       
     </View>
+    </>
   );
+  }
 }
 
 const styles = StyleSheet.create({
@@ -150,13 +172,11 @@ const styles = StyleSheet.create({
 
   FrancePictureBoxWhite:{
     overflow: 'hidden', 
-    bottom:-31.75,
     marginLeft:-90,
   },
 
   FrancePictureWhite:{
     width: 90, height: 90,
-    bottom:31.75,
     marginTop:8,
     marginBottom:4,
     tintColor: '#CDCDCD'
@@ -207,13 +227,11 @@ const styles = StyleSheet.create({
 
   BottlePictureBoxWhite:{
     overflow: 'hidden', 
-    bottom:-50.5,
     marginLeft:-65,
   },
   BottlePictureWhite:{
     width: 65, height: 65,
     marginTop: 18,
-    bottom:50.5,
     tintColor: '#CDCDCD'
   },
 
