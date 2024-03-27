@@ -31,11 +31,10 @@ function LoginView({ navigation }:any) {
             try {
                 const jsonRes = await res.json();
                 console.log(jsonRes.results.rows)
-                if (res.status == 404) {
-                    console.log(" non connecté")
+                if (res.status == 200) {
+                  navigation.replace("Menu", { screen: "Menu" })
                 } else {
-                    console.log("connecté")
-                    navigation.replace("Menu", { screen: "Menu" })
+                  setIsError(true) 
                 }
             } catch (err) {
                 console.log(err);
@@ -46,6 +45,7 @@ function LoginView({ navigation }:any) {
         });
     };
 
+    const [isError, setIsError] = useState(false);
     const [email,setEmail]=  useState("");
     const [password,setPassword]=  useState("");
   return (
@@ -87,6 +87,7 @@ function LoginView({ navigation }:any) {
                     <Text style={styles.forgotPasswordText}>Mot de passe oublié ?</Text>
                 </Pressable>
             </View>
+            <Text style={styles.errorMessage}>{isError ? 'Email ou mot de passe érroné' : ''}</Text>
             
         </View>
         <View style={styles.buttonContainer}>
@@ -161,9 +162,14 @@ const styles = StyleSheet.create({
         fontFamily:'LT Afficher Neue Text',        
     },
 
+  errorMessage:{
+    textAlign:"center",
+    color:"white",
+    marginTop: "10%",
+  },
 
   buttonContainer: {
-    marginTop: "12%",
+    marginTop: "2%",
     paddingHorizontal : 50
   },
   loginButton: {
