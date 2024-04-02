@@ -1,6 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Image, View} from 'react-native';
 import {MapView, AccessoryView, ProfilView } from '.';
+import { UserContext } from './context';
+
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import setNavigationBarColor from "react-native-navigation-bar-color"
@@ -18,9 +20,11 @@ const screenOptions = {
     backgroundColor:"#AC1E44"
   }
 }
-const  Menu = () => {
+const  Menu = () => { 
+  const { user } = useContext(UserContext) as { user: { idUser: string } };
+
   useEffect(() => {
-    // Changez la couleur de la barre de navigation
+    console.log(user.idUser)
     setNavigationBarColor('#AC1E44', true); // Couleur et transparence
   }, []);
   return (
@@ -109,5 +113,5 @@ const  Menu = () => {
     </>
   );
 }
-
-export default Menu;
+export{Menu};
+// export default Menu;

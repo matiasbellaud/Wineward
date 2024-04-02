@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { Component, useContext, useState } from 'react';
 
 import {
   StyleSheet,
@@ -11,9 +11,12 @@ import {
   Platform,
   
 } from 'react-native';
+import { UserContext } from '../context';
 import CryptoJS from 'crypto-js';
 
-function SignUpView({ navigation }:any) {
+function SignUpView({ route , navigation }:any) {
+
+    const { setUser } = useContext(UserContext) as { setUser: React.Dispatch<React.SetStateAction<{ idUser: string }>> };
 
     const onSubmitHandler = () => {
         const hashPassword = CryptoJS.SHA256(password).toString(CryptoJS.enc.Hex);
@@ -34,7 +37,9 @@ function SignUpView({ navigation }:any) {
         .then(async res => { 
           console.log(res.status)
             try {
+                const jsonRes = await res.json();
                 if (res.status == 200) {
+                    setUser({ idUser: jsonRes.results.rows[0].user_id });
                     navigation.replace("Menu", { screen: "Menu" })
                 } else {
                   setIsError(true)
