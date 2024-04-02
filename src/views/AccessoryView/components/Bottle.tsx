@@ -1,4 +1,4 @@
-import React, { useState, Component } from 'react';
+import React, { useState, Component, useContext } from 'react';
 import {
   StyleSheet,
   Text,
@@ -6,9 +6,45 @@ import {
   Image,
   TouchableOpacity,
 } from 'react-native';
+import { UserContext } from '../../context';
 
 class Bottle extends React.Component  {
-  componentDidMount() {
+  static contextType = UserContext;
+  
+  async componentDidMount() {
+    const { user } = this.context as { user: { idUser: string } };
+    let idUser = user.idUser
+    const requestUser = {
+      idUser,
+    };
+    await fetch(`http://192.168.1.28:5070/api/getBottleUser`, {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(requestUser),
+    })
+    .then(async res => { 
+        try {
+            const jsonRes = await res.json();
+            console.log(res.status)
+            if (res.status == 200) {
+              console.log(1)
+              console.log(jsonRes.results.rows )
+              const dataUser = jsonRes.results.rows
+              for (let i=0;i<dataUser.length;i++){
+                this.ButtonList[parseInt(dataUser[i].bottle_size_id)] = true
+              }
+              console.log(this.ButtonList)
+            } 
+        } catch (err) { 
+            console.log(err);
+        };
+    })
+    .catch(err => {
+        console.log(err);
+    });
+  
     this.state.button1=this.ButtonList[0]
     this.state.button2=this.ButtonList[1]
     this.state.button3=this.ButtonList[2]
