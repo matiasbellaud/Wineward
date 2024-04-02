@@ -9,18 +9,19 @@ import {
   Pressable,
   Alert,
   Platform,
-  
 } from 'react-native';
+import CryptoJS from 'crypto-js';
 
 
 function LoginView({ navigation }:any) {
 
     const onSubmitHandler = () => {
+      const hashPassword = CryptoJS.SHA256(password).toString(CryptoJS.enc.Hex);
         const user = {
             email,
-            password,
+            hashPassword,
         };
-        fetch(`http://192.168.183.30:5070/api/loginUser`, {
+        fetch(`http://192.168.1.28:5070/api/loginUser`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

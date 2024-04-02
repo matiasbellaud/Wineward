@@ -11,19 +11,20 @@ import {
   Platform,
   
 } from 'react-native';
-
+import CryptoJS from 'crypto-js';
 
 function SignUpView({ navigation }:any) {
 
     const onSubmitHandler = () => {
+        const hashPassword = CryptoJS.SHA256(password).toString(CryptoJS.enc.Hex);
+        
         const user = {
             lastname,
             firstname,
             email,
-            password
+            hashPassword
         };
-        console.log("start test")
-        fetch(`http://192.168.183.30:5070/api/createUser`, {
+        fetch(`http://192.168.1.28:5070/api/createUser`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -31,6 +32,7 @@ function SignUpView({ navigation }:any) {
             body: JSON.stringify(user),
         })
         .then(async res => { 
+          console.log(res.status)
             try {
                 if (res.status == 200) {
                     navigation.replace("Menu", { screen: "Menu" })
