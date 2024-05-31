@@ -7,17 +7,32 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { UserContext } from '../../context';
+import * as Keychain from 'react-native-keychain';
+
+
+const getUserId = async () => {
+  const credentials = await Keychain.getGenericPassword();
+  if (credentials) {
+    const idUser = credentials.password;
+    console.log(idUser);
+    return idUser
+  } else {
+    console.log('No credentials stored');
+    return null
+  }
+};
 
 class Bottle extends React.Component  {
   static contextType = UserContext;
   
   async componentDidMount() {
-    const { user } = this.context as { user: { idUser: string } };
-    let idUser = user.idUser
+    const idUser = getUserId()
+    // const { user } = this.context as { user: { idUser: string } };
+    // let idUser = user.idUser
     const requestUser = {
       idUser,
     };
-    await fetch(`http://192.168.1.28:5070/api/getBottleUser`, {
+    await fetch(`http://192.168.158.30:5070/api/getBottleUser`, {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json',
@@ -29,8 +44,6 @@ class Bottle extends React.Component  {
             const jsonRes = await res.json();
             console.log(res.status)
             if (res.status == 200) {
-              console.log(1)
-              console.log(jsonRes.results.rows )
               const dataUser = jsonRes.results.rows
               for (let i=0;i<dataUser.length;i++){
                 this.ButtonList[parseInt(dataUser[i].bottle_size_id)] = true

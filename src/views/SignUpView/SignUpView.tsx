@@ -13,6 +13,11 @@ import {
 } from 'react-native';
 import { UserContext } from '../context';
 import CryptoJS from 'crypto-js';
+import * as Keychain from 'react-native-keychain';
+
+const  storeData =  async (key: string, value:string) => {
+  await Keychain.setGenericPassword(key, value);
+}
 
 function SignUpView({ route , navigation }:any) {
 
@@ -27,7 +32,7 @@ function SignUpView({ route , navigation }:any) {
             email,
             hashPassword
         };
-        fetch(`http://192.168.1.28:5070/api/createUser`, {
+        fetch(`http://192.168.158.30:5070/api/createUser`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -40,6 +45,7 @@ function SignUpView({ route , navigation }:any) {
                 const jsonRes = await res.json();
                 if (res.status == 200) {
                     setUser({ idUser: jsonRes.results.rows[0].user_id });
+                    storeData("idUser",jsonRes.results.rows[0].user_id.toString())
                     navigation.replace("Menu", { screen: "Menu" })
                 } else {
                   setIsError(true)

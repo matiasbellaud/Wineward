@@ -1,4 +1,5 @@
 import React, { Component, useContext, useState } from 'react';
+
 import {
   StyleSheet,
   Text,
@@ -12,6 +13,11 @@ import {
 
 import { UserContext } from '../context';
 import CryptoJS from 'crypto-js';
+import * as Keychain from 'react-native-keychain';
+
+const storeData = async (key: string, value: string) => {
+  await Keychain.setGenericPassword(key, value);
+};
 
 function LoginView({ route , navigation }:any) {
  
@@ -23,7 +29,7 @@ function LoginView({ route , navigation }:any) {
             email,
             hashPassword,
         };
-        fetch(`http://192.168.1.28:5070/api/loginUser`, {
+        fetch(`http://192.168.158.30:5070/api/loginUser`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -35,6 +41,9 @@ function LoginView({ route , navigation }:any) {
                 const jsonRes = await res.json();
                 if (res.status == 200) {
                   setUser({ idUser: jsonRes.results.rows[0].user_id });
+                  console.log("test")
+                  storeData("idUser",jsonRes.results.rows[0].user_id.toString())
+                  console.log("test2")
                   navigation.replace("Menu", { screen: "Menu" })
                 } else {
                   setIsError(true) 
